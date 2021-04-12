@@ -1,0 +1,29 @@
+{
+  "name": "tracking-app-api-with-rails",
+  "version": "1.0.0",
+  "description": "This api was built with Rails for my Tracking App as the final project at Microverse",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yocosaka/Tracking-App-Api-with-Rails.git"
+  },
+  "author": "Yoko Saka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yocosaka/Tracking-App-Api-with-Rails/issues"
+  },
+  "homepage": "https://github.com/yocosaka/Tracking-App-Api-with-Rails#readme",
+  "devDependencies": {
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.8.0",
+    "stylelint-scss": "^3.17.2"
+  }
+}
