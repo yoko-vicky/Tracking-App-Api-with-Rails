@@ -1,5 +1,5 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-# Tracking App Api built with Ruby on Rails
+# Tracking App API built with Ruby on Rails
 
 ## About the Project
 
@@ -64,7 +64,7 @@ Give a ⭐️ if you like this project!
 
 ## License
 
-["Bodytrack.it "](https://www.behance.net/gallery/13271423/Bodytrackit-An-iOs-app-Branding-UX-and-UI) design idea by [Gregoire Vella](https://www.behance.net/gregoirevella) is licensed under [Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/).
+This project is [MIT](./LICENSE) licensed.
 
 
 ## Acknowledgements
