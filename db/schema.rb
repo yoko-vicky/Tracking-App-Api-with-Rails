@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_143751) do
+ActiveRecord::Schema.define(version: 2021_04_13_083607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,27 @@ ActiveRecord::Schema.define(version: 2021_04_12_143751) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "records", force: :cascade do |t|
+    t.integer "result", null: false
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_records_on_item_id"
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "password"
+    t.string "username", null: false
+    t.string "password_digest"
+    t.boolean "admin", default: false
     t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
+  add_foreign_key "records", "items"
+  add_foreign_key "records", "users"
 end
