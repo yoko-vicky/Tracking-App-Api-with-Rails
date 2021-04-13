@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'static#home'
   resources :items, only: %i[index show create]
   resources :users, only: %i[index show]
   resources :records, only: %i[index create destroy]
