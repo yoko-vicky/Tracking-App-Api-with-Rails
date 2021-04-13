@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   # before_action :authenticate, except: %i[create]
 
   def index
-    users = User.all
-    render json: users, status: 200
+    @users = User.all
+    render json: @users, status: 200
   end
 
   def show
-    user = User.find(params[:id])
-    if user
-      render json: user, status: 200
+    @user = User.find(params[:id])
+    if @user
+      render json: @user, status: 200
     else
       render json: { error: 'User not found' }, status: 404
     end
@@ -24,9 +24,9 @@ class UsersController < ApplicationController
   #   end
   # end
 
-  private
+  # private
 
-  def user_params
-    params.require(:user).permit(:username, :password_digest, :token)
-  end
+  # def user_params
+  #   params.require(:user).permit(:username, :password)
+  # end
 end

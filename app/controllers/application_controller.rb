@@ -8,9 +8,9 @@ class ApplicationController < ActionController::API
   #   end
   # end
 
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
-  helper_method :login!, :current_user
+  # helper_method :login!, :current_user
 
   def login!
     session[:user_id] = @user.id

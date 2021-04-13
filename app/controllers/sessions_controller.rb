@@ -1,4 +1,4 @@
-class RegistrationsController < ApplicationController
+class SessionsController < ApplicationController
   def login
     @user = User.find_by(username: session_params[:username])
 
@@ -6,7 +6,7 @@ class RegistrationsController < ApplicationController
       login!
       render json: { logged_in: true, user: @user }
     else
-      render json: { status: 401, errors: ['Sorry, login was failed.', 'Please provide correct username and password'] }
+      render json: { status: 401, errors: ['Please provide correct username and password'] }
     end
   end
 
@@ -26,6 +26,6 @@ class RegistrationsController < ApplicationController
   private
 
   def session_params
-    params.require(:user).permit(:username, :password_digest, :token)
+    params.require(:user).permit(:username, :password)
   end
 end
