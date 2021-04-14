@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  # before_action :authenticate, except: %i[create]
+  before_action :set_user, only: %i[show edit]
+  before_action only: %i[show] do
+    require_same_user(@user)
+  end
 
   def index
     @users = User.all
@@ -7,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     if @user
       render json: @user, status: 200
     else
@@ -15,18 +17,9 @@ class UsersController < ApplicationController
     end
   end
 
-  # def create
-  #   user = User.new(user_params)
-  #   if user.save
-  #     render json: user, status: 200
-  #   else
-  #     render json: { error: 'Something might be wrong. User could not be created.' }, status: 404
-  #   end
-  # end
+  private
 
-  # private
-
-  # def user_params
-  #   params.require(:user).permit(:username, :password)
-  # end
+  def set_user
+    @user = User.find(params[:id])
+  end
 end
