@@ -1,27 +1,28 @@
 class SessionsController < ApplicationController
   include CurrentUserConcern
 
-  def login
+  def create
     @user = User.find_by(username: session_params[:username])
 
     if @user&.authenticate(session_params[:password])
-      session[:user_id] = @user.id
-      render json: { logged_in: true, user: @user }
+      login!
+      render json: { logged_in: true, user: @user, token: @user.token }
     else
       render json: { status: 401, errors: ['Please provide correct username and password'] }
     end
   end
 
-  def logout
-    session[:user_id] = nil
+  def destroy
+    logout!
     render json: { status: 200, logged_out: true }
   end
 
   def logged_in?
-    if @current_user
+    # params[:token]
+    if login? && current_user
       render json: { logged_in: true, user: current_user }
     else
-      render json: { logged_in: false, message: 'User does not exist.' }
+      render json: { logged_in: false, message: 'no such user' }
     end
   end
 
