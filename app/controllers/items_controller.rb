@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  # before_action :authorize
+  before_action :authorize
+  before_action :require_admin
   before_action :set_item, only: %i[show update destroy]
 
   def index
@@ -49,5 +50,11 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def require_admin
+    return if @current_user.admin
+
+    render json: { error: 'Sorry, only admin user can see this page' }, status: 404
   end
 end

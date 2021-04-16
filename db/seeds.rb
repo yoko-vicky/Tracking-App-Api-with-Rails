@@ -18,6 +18,8 @@ User.create([{
               username: 'Asahi', password: 'asahi123'
             }, {
               username: 'Vicky', password: 'vicky123'
+            }, {
+              username: 'admin', password: 'admin', admin: true
             }])
 
 Record.create([{
