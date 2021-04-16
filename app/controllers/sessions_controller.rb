@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     if @user&.authenticate(session_params[:password])
       login!
-      render json: { logged_in: true, user: @user, token: @user.token }
+      render json: { logged_in: true, user: @user }
     else
       render json: { status: 401, errors: ['Please provide correct username and password'] }
     end
@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
   end
 
   def logged_in?
-    # params[:token]
     if login? && current_user
       render json: { logged_in: true, user: current_user }
     else

@@ -4,7 +4,7 @@ class RegistrationsController < ApplicationController
 
     if @user.valid?
       login!
-      render json: { status: :created, user: @user, token: @user.token }
+      render json: { status: :created, user: @user }
     else
       render json: { status: 401, errorMsgs: @user.errors.full_messages }
     end
@@ -13,6 +13,6 @@ class RegistrationsController < ApplicationController
   private
 
   def registrations_params
-    params.require(:user).permit(:username, :password, :token)
+    params.require(:user).permit(:username, :password)
   end
 end

@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::API
-  include ActionController::HttpAuthentication::Token::ControllerMethods
-
   def login!
     session[:user_id] = @user.id
   end

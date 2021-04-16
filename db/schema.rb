@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_083607) do
+ActiveRecord::Schema.define(version: 2021_04_16_025146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,8 @@ ActiveRecord::Schema.define(version: 2021_04_13_083607) do
     t.string "username", null: false
     t.string "password_digest"
     t.boolean "admin", default: false
-    t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["token"], name: "index_users_on_token", unique: true
   end
 
   add_foreign_key "records", "items"
