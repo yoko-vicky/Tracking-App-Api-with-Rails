@@ -12,6 +12,8 @@ class ApplicationController < ActionController::API
   end
 
   def auth_header
+    return unless request.headers['Authorization']
+
     request.headers['Authorization'].split(' ')[1]
   end
 

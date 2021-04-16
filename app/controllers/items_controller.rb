@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authorize
+  before_action :authorized
   before_action :require_admin
   before_action :set_item, only: %i[show update destroy]
 

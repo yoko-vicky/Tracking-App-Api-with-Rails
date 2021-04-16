@@ -16,14 +16,13 @@ class SessionsController < ApplicationController
     end
   end
 
-  # LOGOUT
-  def destroy
-    render json: { status: 200, logged_out: true }
-  end
-
   # AUTO LOGIN
   def auto_login
-    render json: @user
+    if logged_in_user
+      render json: logged_in_user
+    else
+      render json: { error: 'No User Logged In' }
+    end
   end
 
   private
