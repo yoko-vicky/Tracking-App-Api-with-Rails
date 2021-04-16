@@ -78,6 +78,7 @@ GEM
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
+    jwt (2.2.2)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -197,6 +198,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   hirb
+  jwt
   listen (~> 3.3)
   pg (~> 1.1)
   pry (~> 0.13.1)

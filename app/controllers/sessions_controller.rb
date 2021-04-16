@@ -1,33 +1,38 @@
 class SessionsController < ApplicationController
-  include CurrentUserConcern
+  before_action :authorized, only: %i[auto_login]
+  before_action :set_user, except: %i[destroy]
 
+  # LOGIN
   def create
     @user = User.find_by(username: session_params[:username])
 
     if @user&.authenticate(session_params[:password])
-      login!
-      render json: { logged_in: true, user: @user }
+      token = encode_token({ user_id: @user.id })
+      render json: { logged_in: true, user: @user, token: token }
+    elsif @user
+      render json: { error: 'Please provide correct password' }, status: 404
     else
-      render json: { status: 401, errors: ['Please provide correct username and password'] }
+      render json: { error: 'Please provide correct username and password' }, status: 404
     end
   end
 
+  # LOGOUT
   def destroy
-    logout!
     render json: { status: 200, logged_out: true }
   end
 
-  def logged_in?
-    if login? && current_user
-      render json: { logged_in: true, user: current_user }
-    else
-      render json: { logged_in: false, message: 'no such user' }
-    end
+  # AUTO LOGIN
+  def auto_login
+    render json: @user
   end
 
   private
 
+  def set_user
+    @user = User.find_by(username: session_params[:username])
+  end
+
   def session_params
-    params.require(:user).permit(:username, :password)
+    params.require(:session).permit(:username, :password)
   end
 end

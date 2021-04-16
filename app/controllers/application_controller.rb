@@ -1,26 +1,39 @@
 class ApplicationController < ActionController::API
-  def login!
-    session[:user_id] = @user.id
+  SECRET_KEY = Rails.application.credentials.jwt[:secret].to_s
+  EXPIRES_IN = Rails.application.credentials.jwt[:expires_in]
+
+  def authorized
+    render json: { message: 'Please log in' }, status: 401 unless logged_in?
   end
 
-  def login?
-    !!session[:user_id]
+  def encode_token(payload)
+    payload[:exp] = EXPIRES_IN.days.from_now.to_i
+    JWT.encode(payload, SECRET_KEY, 'HS256')
   end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  def auth_header
+    request.headers['Authorization'].split(' ')[1]
   end
 
-  def authorized_user?
-    @user == current_user
+  def decoded_token
+    return unless auth_header
+
+    token = auth_header
+    begin
+      JWT.decode(token, SECRET_KEY, true, algorithm: 'HS256')
+    rescue JWT::DecodeError
+      nil
+    end
   end
 
-  def logout!
-    session.clear
-    # session[:user_id] = nil
+  def logged_in_user
+    return unless decoded_token
+
+    user_id = decoded_token[0]['user_id']
+    @current_user = User.find_by(id: user_id)
   end
 
-  def set_user
-    @user = User.find_by(id: session[:user_id])
+  def logged_in?
+    !!logged_in_user
   end
 end

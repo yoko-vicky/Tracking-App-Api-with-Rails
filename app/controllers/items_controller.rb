@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  # before_action :authorize
   before_action :set_item, only: %i[show update destroy]
 
   def index
@@ -10,7 +11,7 @@ class ItemsController < ApplicationController
     if @item
       render json: @item, status: 200
     else
-      render json: { error: 'Item was not found' }, status: 404
+      render json: { error: 'Sorry, the item was not found' }, status: 404
     end
   end
 
@@ -24,7 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    # byebug
     if @item.update(item_params)
       render json: @item, status: 200
     else
