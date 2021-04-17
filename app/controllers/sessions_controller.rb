@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :authorized, only: %i[auto_login]
-  before_action :set_user, except: %i[destroy]
+  before_action :set_user
 
   # LOGIN
   def create
@@ -13,15 +12,6 @@ class SessionsController < ApplicationController
       render json: { error: 'Please provide correct password' }, status: 404
     else
       render json: { error: 'Please provide correct username and password' }, status: 404
-    end
-  end
-
-  # AUTO LOGIN
-  def auto_login
-    if logged_in_user
-      render json: logged_in_user
-    else
-      render json: { error: 'No User Logged In' }
     end
   end
 
