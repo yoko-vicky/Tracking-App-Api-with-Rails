@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
   before_action :set_record, only: %i[show update destroy]
 
   def index
-    @records = @current_user.records.order_by_updated
+    @records = @current_user.records.order_by_date
 
     if @records
       render json: @records, status: 200

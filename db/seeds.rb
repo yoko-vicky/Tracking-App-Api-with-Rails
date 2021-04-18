@@ -1,23 +1,23 @@
 Item.create([{
-              title: 'Idioms', unit: 'idiom', icon: 'bi:chat-quote'
+              title: 'Idioms', unit: 'idiom', icon: 'bi:chat-quote', target: 30
             }, {
-              title: 'Grammer', unit: 'min', icon: 'bi:chat-quote'
+              title: 'Grammer', unit: 'min', icon: 'bi:chat-quote', target: 60
             }, {
-              title: 'Pronounciation', unit: 'min', icon: 'bi:chat-quote'
+              title: 'Pronounciation', unit: 'min', icon: 'bi:chat-quote', target: 15
             }, {
-              title: 'Reading', unit: 'page', icon: 'bi:chat-quote'
+              title: 'Reading', unit: 'page', icon: 'bi:chat-quote', target: 10
             }, {
-              title: 'Spaking', unit: 'min', icon: 'bi:chat-quote'
+              title: 'Spaking', unit: 'min', icon: 'bi:chat-quote', target: 30
             }, {
-              title: 'Writing', unit: 'word', icon: 'bi:chat-quote'
+              title: 'Writing', unit: 'word', icon: 'bi:chat-quote', target: 30
             }])
 
 User.create([{
-              username: 'Yocotan', password: 'yocotan123'
+              username: 'yocotan', password: 'yocotan'
             }, {
-              username: 'Asahi', password: 'asahi123'
+              username: 'asahi', password: 'asahi'
             }, {
-              username: 'Vicky', password: 'vicky123'
+              username: 'vicky', password: 'vicky'
             }, {
               username: 'admin', password: 'admin', admin: true
             }])
