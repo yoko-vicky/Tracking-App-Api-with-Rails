@@ -13,6 +13,8 @@ Item.create([{
             }])
 
 User.create([{
+              username: 'a', password: 'a'
+            }, {
               username: 'yocotan', password: 'yocotan'
             }, {
               username: 'asahi', password: 'asahi'
@@ -23,17 +25,17 @@ User.create([{
             }])
 
 Record.create([{
-                user_id: 1, date: '1620864000000', result: 32, item_id: 1
+                user_id: 1, date: '1615680000000', result: 32, item_id: 1
               }, {
-                user_id: 1, date: '1620432000000', result: 120, item_id: 1
+                user_id: 1, date: '1617235200000', result: 120, item_id: 1
               }, {
-                user_id: 1, date: '1620432000000', result: 88, item_id: 2
+                user_id: 1, date: '1617235200000', result: 88, item_id: 2
               }, {
-                user_id: 1, date: '1620604800000', result: 451, item_id: 1
+                user_id: 1, date: '1617840000000', result: 451, item_id: 1
               }, {
-                user_id: 1, date: '1620604800000', result: 56, item_id: 2
+                user_id: 1, date: '1617840000000', result: 56, item_id: 2
               }, {
-                user_id: 1, date: '1620604800000', result: 116, item_id: 3
+                user_id: 1, date: '1617840000000', result: 116, item_id: 3
               }, {
-                user_id: 1, date: '1619827200000', result: 1920, item_id: 3
+                user_id: 1, date: '1618790400000', result: 999, item_id: 1
               }])
