@@ -23,9 +23,17 @@ User.create([{
             }])
 
 Record.create([{
-                result: 32, item_id: 1, user_id: 2, date: '2021-04-13 00:00:00 +0000'
+                user_id: 1, date: '2021-04-13 00:00:00 +0000', result: 32, item_id: 1
               }, {
-                result: 60, item_id: 4, user_id: 1, date: '2021-04-08 00:00:00 +0000'
+                user_id: 1, date: '2021-04-08 00:00:00 +0000', result: 120, item_id: 1
               }, {
-                result: 1000, item_id: 6, user_id: 3, date: '2021-04-01 00:00:00 +0000'
+                user_id: 1, date: '2021-04-08 00:00:00 +0000', result: 88, item_id: 2
+              }, {
+                user_id: 1, date: '2021-04-10 00:00:00 +0000', result: 451, item_id: 1
+              }, {
+                user_id: 1, date: '2021-04-10 00:00:00 +0000', result: 56, item_id: 2
+              }, {
+                user_id: 1, date: '2021-04-10 00:00:00 +0000', result: 116, item_id: 3
+              }, {
+                user_id: 1, date: '2021-04-01 00:00:00 +0000', result: 1920, item_id: 3
               }])

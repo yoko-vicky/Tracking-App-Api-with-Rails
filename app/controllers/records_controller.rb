@@ -4,9 +4,11 @@ class RecordsController < ApplicationController
 
   def index
     @records = @current_user.records.order_by_date
+    @record_dates = @current_user.records.order_by_date.map(&:date).uniq
+    # @featured_result = @current_user.records.order_by_date.map { |record| [record.date, record.result] }
 
     if @records
-      render json: @records, status: 200
+      render json: { records: @records, record_dates: @record_dates }, status: 200
     else
       render json: 'No records yet'
     end
