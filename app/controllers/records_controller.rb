@@ -3,7 +3,18 @@ class RecordsController < ApplicationController
   before_action :set_record, only: %i[show update destroy]
 
   def index
-    @records = @current_user.records.order_by_date
+    @records = @current_user.records.order_by_date.joins(:item).select('
+      records.id,
+      records.user_id,
+      item_id,
+      date,
+      result,
+      items.title AS item_title,
+      items.unit AS item_unit,
+      items.icon AS item_icon,
+      items.target AS target
+      ')
+
     @record_dates = @current_user.records.order_by_date.map(&:date).uniq
     # @featured_result = @current_user.records.order_by_date.map { |record| [record.date, record.result] }
 
