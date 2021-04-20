@@ -9,14 +9,10 @@ class RecordsController < ApplicationController
       item_id,
       date,
       result,
-      items.title AS item_title,
-      items.unit AS item_unit,
-      items.icon AS item_icon,
       items.target AS target
       ')
 
     @record_dates = @current_user.records.order_by_date.map(&:date).uniq
-    # @featured_result = @current_user.records.order_by_date.map { |record| [record.date, record.result] }
 
     if @records
       render json: { records: @records, record_dates: @record_dates }, status: 200
@@ -34,9 +30,10 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @record = logged_in_user.records.new(record_params)
+    @record = @current_user.records.create(result: rec_pms[:result], item_id: rec_pms[:itemId], date: rec_pms[:date])
 
-    if @record.save
+    # byebug
+    if @record.valid?
       render json: @record, status: 200
     else
       render json: { error: 'Track could not be created.' }, status: 404
@@ -44,7 +41,7 @@ class RecordsController < ApplicationController
   end
 
   def update
-    if @record.update(record_params)
+    if @record.update(result: rec_pms[:result], item_id: rec_pms[:itemId], date: rec_pms[:date])
       render json: @record, status: 200
     else
       render json: { error: 'Track could not be updated.' }, status: 404
@@ -63,11 +60,10 @@ class RecordsController < ApplicationController
   private
 
   def set_record
-    # @record = Record.find(params[:id])
     @record = user.records.find(params[:id])
   end
 
-  def record_params
-    params.require(:record).permit(:result, :item_id, :date)
+  def rec_pms
+    params.require(:record).permit(:result, :item_id, :date, :itemId)
   end
 end
