@@ -32,7 +32,6 @@ class RecordsController < ApplicationController
   def create
     @record = @current_user.records.create(result: rec_pms[:result], item_id: rec_pms[:itemId], date: rec_pms[:date])
 
-    # byebug
     if @record.valid?
       render json: @record, status: 200
     else
@@ -60,7 +59,7 @@ class RecordsController < ApplicationController
   private
 
   def set_record
-    @record = user.records.find(params[:id])
+    @record = @current_user.records.find(params[:id])
   end
 
   def rec_pms
