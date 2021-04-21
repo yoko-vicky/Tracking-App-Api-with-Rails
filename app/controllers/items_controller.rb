@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :authorized, except: %i[index show]
-  before_action :require_admin, only: %i[create update destroy]
   before_action :set_item, only: %i[show update destroy]
 
   def index
@@ -35,7 +34,7 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item
-      @item.destory
+      @item.destroy
       render json: { message: 'Successfully deleted', deleted_item: @item }, status: 200
     else
       render json: { error: 'Item could not be deleted' }, status: 404
@@ -45,16 +44,10 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :unit, :icon)
+    params.require(:item).permit(:title, :unit, :icon, :target)
   end
 
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def require_admin
-    return if @current_user.admin
-
-    render json: { error: 'Sorry, only admin user can see this page' }, status: 404
   end
 end

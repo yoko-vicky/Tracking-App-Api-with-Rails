@@ -49,7 +49,7 @@ class RecordsController < ApplicationController
 
   def destroy
     if @record
-      @record.destory
+      @record.destroy
       render json: { message: 'Successfully deleted', deleted_record: @record }, status: 200
     else
       render json: { error: 'Sorry, Record could not be deleted' }, status: 404

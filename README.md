@@ -48,12 +48,22 @@ e.g. $ git clone https://github.com/yourUsername/yourProjectName
 
 
 ## Authentication
-- [Items table](herokuapp.com/items) can be seen by anyone
+
+- [Items table](https://yoco-tracking-app-api.herokuapp.com/items) can be seen by anyone
 - To manage records and items, it needs to log in with a username and a password. Then, you need to include a token, which is issued and passed by logged in, in the header when interacting with this API like below: 
 `headers: {
+  'Content-Type': 'application/json',
   Authorization: `Bearer ${token}`,
 },`
 - Plus, to manage items, it needs to log in with the user account with the admin: true
+
+## How to create admin user
+
+This API administrator can create an admin user through the rails console in the local environment or using the rails database seed file whichever you like. For example, in the console, run IRB by `rails c`, then in the IRB console, you can create an admin user like below:
+`User.create(username: 'admin', password: 'admin', admin: true)`
+
+By default, I created the seeds file in this repository to create an admin user. So after `rails db:setup` at step 9 in the "Getting Started" section, the admin user will be automatically created.
+
 
 ## Author
 
