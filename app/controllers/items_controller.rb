@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authorized
+  before_action :authorized, except: %i[index show]
   before_action :require_admin, only: %i[create update destroy]
   before_action :set_item, only: %i[show update destroy]
 

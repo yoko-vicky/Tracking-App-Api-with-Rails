@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_action :authorized, only: [:show]
   # INDEX IS ONLY FOR DEVELOPMENT
-  def index
-    @users = User.all
-    render json: @users, status: 200
-  end
+  # def index
+  #   @users = User.all
+  #   render json: @users, status: 200
+  # end
 
   def show
     render json: @current_user, status: 200

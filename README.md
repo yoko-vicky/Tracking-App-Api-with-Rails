@@ -1,9 +1,20 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 # Tracking App API built with Ruby on Rails
+![Screenshot](/screenshot.png)
 
 ## About the Project
 
-This project was based on ...
+This REST API was built with Ruby on Rails, and Postgres for the databases as the final project at Microverse. With this API, records (measurements) and items (things to measure) can be added, edited, and removed manually interacting with the database in the front-end application.
+
+Please check how this API work in the [Tracking App with React](https://github.com/yocosaka/Tracking-App-with-React) which is the front-end application built with React, corresponds to this API.
+
+- The database has 3 tables and models for User, Item, and Record
+  * Users table has username, password, and admin(boolean) columns
+  * Items table has title, unit, icon, and target columns
+  * Records table has date, result, item_id, and user_id
+- [Items table](https://yoco-tracking-app-api.herokuapp.com/items), which is "the measurements", can be accessed by all users without user authentication
+- Users and Records tables can be seen only by authorized users
+- To authorize users, this app uses [JWT](https://jwt.io/) and [Rack-cors](https://github.com/cyu/rack-cors)
 
 A list of commonly used resources that I find helpful is listed in the acknowledgments.
 
@@ -15,7 +26,7 @@ A list of commonly used resources that I find helpful is listed in the acknowled
 
 ## Live Demo
 
-[Live Demo Link](#)
+[Live Demo Link](https://yoco-tracking-app-api.herokuapp.com/)
 
 
 ## Getting Started
@@ -35,6 +46,14 @@ e.g. $ git clone https://github.com/yourUsername/yourProjectName
 10. Run `rails server` to run rails application in your local server
 11. Run `rspec` to run rspec tests
 
+
+## Authentication
+- [Items table](herokuapp.com/items) can be seen by anyone
+- To manage records and items, it needs to log in with a username and a password. Then, you need to include a token, which is issued and passed by logged in, in the header when interacting with this API like below: 
+`headers: {
+  Authorization: `Bearer ${token}`,
+},`
+- Plus, to manage items, it needs to log in with the user account with the admin: true
 
 ## Author
 
@@ -64,9 +83,14 @@ Give a ⭐️ if you like this project!
 
 ## License
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./LICENSE) licensed. 
 
 
 ## Acknowledgements
-<!-- * [rspec-rails](https://github.com/rspec/rspec-rails)
-* [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers) -->
+* [Ruby on Rails guide](https://guides.rubyonrails.org/api_documentation_guidelines.html)
+* [Arctile in CloudBees](https://www.cloudbees.com/blog/producing-documentation-for-your-rails-api/)
+* [JWT](https://jwt.io/)
+* [Rack-cors](https://github.com/cyu/rack-cors)
+* [Bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
+* [Shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+* [Rspec-rails](https://github.com/rspec/rspec-rails)
