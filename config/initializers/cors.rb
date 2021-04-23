@@ -12,7 +12,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
   # for production
   allow do
-    origins 'https://tracking-app-yoco.herokuapp.com'
+    origins 'https://yoco-tracking-app-front.herokuapp.com'
 
     resource '*',
              headers: :any,

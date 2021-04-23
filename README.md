@@ -46,6 +46,12 @@ e.g. $ git clone https://github.com/yourUsername/yourProjectName
 10. Run `rails server` to run rails application in your local server
 11. Run `rspec` to run rspec tests
 
+## How to allow the frontend app to interact with this API
+1. Go to puma.rb in config/initializers, and rewrite the port from 3000 to 3001 like below:
+e.g. `port ENV.fetch("PORT") { 3001 }`
+
+2. Go to cors.rb in config/initializers, and rewrite the origins path for your frontend path in both local and production
+
 
 ## Authentication
 
@@ -56,6 +62,7 @@ e.g. $ git clone https://github.com/yourUsername/yourProjectName
   Authorization: `Bearer ${token}`,
 },`
 - Plus, to manage items, it needs to log in with the user account with the admin: true
+
 
 ## How to create admin user
 
