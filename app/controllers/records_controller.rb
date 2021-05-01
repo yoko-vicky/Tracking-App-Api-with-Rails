@@ -33,7 +33,7 @@ class RecordsController < ApplicationController
     @record = @current_user.records.create(result: rec_pms[:result], item_id: rec_pms[:itemId], date: rec_pms[:date])
 
     if @record.valid?
-      render json: @record, status: 200
+      render json: @record, status: 201
     else
       render json: { error: 'Track could not be created.' }, status: 404
     end

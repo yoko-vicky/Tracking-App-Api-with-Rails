@@ -8,10 +8,8 @@ class SessionsController < ApplicationController
     if @user&.authenticate(user_params[:password])
       token = encode_token({ user_id: @user.id })
       render json: { logged_in: true, user: @user, token: token }
-    elsif @user
-      render json: { error: 'Please provide correct password' }, status: 404
     else
-      render json: { error: 'Please provide correct username and password' }, status: 404
+      render json: { error: 'Please provide correct username and password' }, status: 401
     end
   end
 
