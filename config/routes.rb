@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :users, only: %i[show]
   resources :records, except: %i[new]
   post '/signup', to: 'users#create'
-  post '/login', to: 'sessions#create'
+  post '/login', to: 'users#login'
 end
