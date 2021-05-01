@@ -3,16 +3,8 @@ class RecordsController < ApplicationController
   before_action :set_record, only: %i[show update destroy]
 
   def index
-    @records = @current_user.records.order_by_date.joins(:item).select('
-      records.id,
-      records.user_id,
-      item_id,
-      date,
-      result,
-      items.target AS target
-      ')
-
-    @record_dates = @current_user.records.order_by_date.map(&:date).uniq
+    @records = all_records(@current_user)
+    @record_dates = all_record_dates(@current_user)
 
     if @records
       render json: { records: @records, record_dates: @record_dates }, status: 200
@@ -43,7 +35,7 @@ class RecordsController < ApplicationController
     if @record.update(result: rec_pms[:result], item_id: rec_pms[:itemId], date: rec_pms[:date])
       render json: @record, status: 200
     else
-      render json: { error: 'Track could not be updated.' }, status: 404
+      render json: { error: 'Track could not be updated.' }, status: 422
     end
   end
 
@@ -52,7 +44,7 @@ class RecordsController < ApplicationController
       @record.destroy
       render json: { message: 'Successfully deleted', deleted_record: @record }, status: 200
     else
-      render json: { error: 'Sorry, Record could not be deleted' }, status: 404
+      render json: { error: 'Sorry, Record could not be deleted' }, status: 422
     end
   end
 
