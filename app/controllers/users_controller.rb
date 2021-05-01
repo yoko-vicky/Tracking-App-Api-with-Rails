@@ -42,9 +42,8 @@ class UsersController < ApplicationController
   def user_data(user)
     obj = {
       id: user.id,
-      username: user.name,
-      admin: user.admin,
-      token: user.token
+      username: user.username,
+      admin: user.admin
     }
     obj
   end

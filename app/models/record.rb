@@ -5,7 +5,7 @@ class Record < ApplicationRecord
 
   scope :order_by_date, -> { order(date: :desc) }
 
-  def all_records(user)
+  def self.all_records(user)
     user.records.order_by_date.joins(:item).select('
       records.id,
       records.user_id,
@@ -16,7 +16,8 @@ class Record < ApplicationRecord
       ')
   end
 
-  def all_record_dates(user)
+  def self.all_record_dates(user)
     user.records.order_by_date.map(&:date).uniq
+    # user.records.order_by_date.pluck(&:date).uniq
   end
 end

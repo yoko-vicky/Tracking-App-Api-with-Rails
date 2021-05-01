@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[show update destroy]
 
   def index
-    @items = Item.all.order_by_title
+    @items = Item.order_by_title
     render json: @items, status: 200
   end
 
