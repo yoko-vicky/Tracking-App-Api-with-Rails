@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :records, except: %i[new]
   post '/signup', to: 'users#create'
   post '/login', to: 'users#login'
+  post '/auto_login', to: 'users#auto_login'
 end

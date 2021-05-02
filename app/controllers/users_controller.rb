@@ -29,6 +29,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def auto_login
+    @user = User.find(user_params[:user_id])
+
+    if @user
+      render json: { logged_in: true, user: user_data(@user) }
+    else
+      render json: { error: 'Please provide correct token' }, status: 401
+    end
+  end
+
   private
 
   def set_user
@@ -36,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :user_id)
   end
 
   def user_data(user)
