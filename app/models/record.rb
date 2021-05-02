@@ -17,7 +17,6 @@ class Record < ApplicationRecord
   end
 
   def self.all_record_dates(user)
-    user.records.order_by_date.map(&:date).uniq
-    # user.records.order_by_date.pluck(&:date).uniq
+    user.records.order_by_date.pluck(:date).uniq
   end
 end
