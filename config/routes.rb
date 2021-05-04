@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   resources :items, except: %i[new]
-  resources :users, only: %i[show]
+  resources :users, only: %i[show create]
+  resources :login, only: %i[create]
+  resources :auto_login, only: %i[create]
   resources :records, except: %i[new]
-  post '/signup', to: 'users#create'
-  post '/login', to: 'users#login'
-  post '/auto_login', to: 'users#auto_login'
 end

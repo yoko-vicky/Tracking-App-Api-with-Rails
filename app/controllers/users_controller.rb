@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:login]
   before_action :authorized, only: [:show]
 
   def show
@@ -8,7 +7,7 @@ class UsersController < ApplicationController
 
   # SIGNUP
   def create
-    @user = User.create(user_params)
+    @user = User.create(username: user_params[:username], password: user_params[:password])
 
     if @user.valid?
       token = encode_token({ user_id: @user.id })
@@ -18,32 +17,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def login
-    @user = User.find_by(username: user_params[:username])
-
-    if @user&.authenticate(user_params[:password])
-      token = encode_token({ user_id: @user.id })
-      render json: { logged_in: true, user: user_data(@user), token: token }
-    else
-      render json: { error: 'Please provide correct username and password' }, status: 401
-    end
-  end
-
-  def auto_login
-    @user = User.find(user_params[:user_id])
-
-    if @user
-      render json: { logged_in: true, user: user_data(@user) }
-    else
-      render json: { error: 'Please provide correct token' }, status: 401
-    end
-  end
-
   private
-
-  def set_user
-    @user = User.find_by(username: user_params[:username])
-  end
 
   def user_params
     params.require(:user).permit(:username, :password, :user_id)
