@@ -4,7 +4,7 @@ class CreateRecords < ActiveRecord::Migration[6.1]
       t.integer :result, null: false
       t.references :item, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
-      t.datetime :date, null: false
+      t.string :date, null: false
 
       t.timestamps
     end

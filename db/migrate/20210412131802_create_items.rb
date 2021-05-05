@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :unit
       t.string :icon
+      t.integer :target
 
       t.timestamps
     end

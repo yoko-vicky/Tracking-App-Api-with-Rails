@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_01_095418) do
+ActiveRecord::Schema.define(version: 2021_04_16_025146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,18 +19,18 @@ ActiveRecord::Schema.define(version: 2021_05_01_095418) do
     t.string "title"
     t.string "unit"
     t.string "icon"
+    t.integer "target"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "target"
   end
 
   create_table "records", force: :cascade do |t|
     t.integer "result", null: false
     t.bigint "item_id", null: false
     t.bigint "user_id", null: false
+    t.string "date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "date"
     t.index ["item_id"], name: "index_records_on_item_id"
     t.index ["user_id"], name: "index_records_on_user_id"
   end
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2021_05_01_095418) do
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "records", "items"
