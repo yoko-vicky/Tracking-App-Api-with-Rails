@@ -24,7 +24,9 @@ module Api
       end
 
       def create
+        # rubocop:disable Layout/LineLength
         @record = @current_user.records.create(result: rec_pms[:result], item_id: rec_pms[:itemId], date: rec_pms[:date])
+        # rubocop:enable Layout/LineLength
 
         if @record.valid?
           render json: @record, status: 201
