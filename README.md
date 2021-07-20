@@ -12,8 +12,6 @@ Please check how this API work in the [Tracking App with React](https://github.c
   * Users table has username, password, and admin(boolean) columns
   * Items table has title, unit, icon, and target columns
   * Records table has date, result, item_id, and user_id
-- [Items table](https://yoco-tracking-app-api.herokuapp.com/items), which is "the measurements", can be accessed by all users without user authentication
-- Users and Records tables can be seen only by authorized users
 - To authorize users, this app uses [JWT](https://jwt.io/) and [Rack-cors](https://github.com/cyu/rack-cors)
 
 A list of commonly used resources that I find helpful is listed in the acknowledgments.
