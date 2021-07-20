@@ -55,7 +55,6 @@ e.g. `port ENV.fetch("PORT") { 3001 }`
 
 ## Authentication
 
-- [Items table](https://yoco-tracking-app-api.herokuapp.com/items) can be seen by anyone
 - To manage records and items, it needs to log in with a username and a password. Then, you need to include a token, which is issued and passed by logged in, in the header when interacting with this API like below: 
 `headers: {
   'Content-Type': 'application/json',
