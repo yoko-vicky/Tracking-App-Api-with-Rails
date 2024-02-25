@@ -4,15 +4,19 @@
 
 ## About the Project
 
-This REST API was built with Ruby on Rails, and Postgres for the databases as the final project at Microverse. With this API, records (measurements) and items (things to measure) can be added, edited, and removed manually interacting with the database in the front-end application.
+As the final project at Microverse, this REST API was constructed using Ruby on Rails and Postgres for database management. It facilitates adding, editing, and removing records (measurements) and items (things to measure) via direct interaction with the database within the front-end application.
 
-Please check how this API work in the [Tracking App with React](https://github.com/yocosaka/Tracking-App-with-React) which is the front-end application built with React, corresponds to this API.
+To understand its functionality, you can explore the Tracking App with React, the corresponding front-end application integrated with this API.
 
-- The database has 3 tables and models for User, Item, and Record
-  * Users table has username, password, and admin(boolean) columns
-  * Items table has title, unit, icon, and target columns
-  * Records table has date, result, item_id, and user_id
-- To authorize users, this app uses [JWT](https://jwt.io/) and [Rack-cors](https://github.com/cyu/rack-cors)
+### Key Components:
+
+- The database comprises three tables and corresponding models: User, Item, and Record.
+- User table includes columns for username, password, and admin privileges.
+- The items table features title, unit, icon, and target specifications columns.
+- Records table consists of date, result, item_id, and user_id fields.
+- User authorization is implemented using [JWT](https://jwt.io/) and [Rack-cors](https://github.com/cyu/rack-cors) for enhanced security.
+
+Please check how this API works in the [Tracking App with React](https://github.com/yocosaka/Tracking-App-with-React), which is the front-end application built with React, corresponds to this API.
 
 A list of commonly used resources that I find helpful is listed in the acknowledgments.
 
@@ -29,7 +33,7 @@ A list of commonly used resources that I find helpful is listed in the acknowled
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, follow these simple example steps.
 
 1. On the project GitHub page, navigate to the main page of the repository.
 2. Under the repository name, locate and click on a green button named `Code`. 
