@@ -1,114 +1,167 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
-# Tracking App API built with Ruby on Rails
-![Screenshot](/screenshot.png)
+# 📦 Tracking App API – Ruby on Rails RESTful Backend
 
-## About the Project
+A structured REST API that powers the **Tracking App** — enabling clear, customizable daily habit tracking with secure user management.
 
-As the final project at Microverse, this REST API was constructed using Ruby on Rails and Postgres for database management. It facilitates adding, editing, and removing records (measurements) and items (things to measure) via direct interaction with the database within the front-end application.
+![screenshot](./screenshot.png)
 
-To understand its functionality, you can explore the Tracking App with React, the corresponding front-end application integrated with this API.
+---
 
-### Key Components:
+## 🧭 About the Project
 
-- The database comprises three tables and corresponding models: User, Item, and Record.
-- User table includes columns for username, password, and admin privileges.
-- The items table features title, unit, icon, and target specifications columns.
-- Records table consists of date, result, item_id, and user_id fields.
-- User authorization is implemented using [JWT](https://jwt.io/) and [Rack-cors](https://github.com/cyu/rack-cors) for enhanced security.
+**Tracking App API** is the Rails-based backend for the fullstack **Tracking App**. It provides a RESTful interface to manage users, categories (items), and daily progress records.
 
-Please check how this API works in the [Tracking App with React](https://github.com/yocosaka/Tracking-App-with-React), which is the front-end application built with React, corresponds to this API.
+Developed as a Microverse capstone, this API was designed to support an intuitive, low-friction UX on the frontend — handling structured data and authentication cleanly to reduce user confusion and support real-world use.
 
-A list of commonly used resources that I find helpful is listed in the acknowledgments.
+🔗 Frontend repo: [Tracking App with React & Redux](https://github.com/yoko-vicky/Tracking-App-with-React-Redux)
 
+---
 
-## Built With
+## 🧠 API Design Highlights
 
-* [Ruby on Rails](https://rubyonrails.org/)
-* [Ruby](https://www.ruby-lang.org/en/)
+- RESTful architecture aligned with Rails best practices
+- Secure authentication using JWT
+- CORS setup for seamless frontend–backend communication
+- Admin mode for managing trackable categories
+- Structured, relational Postgres database
 
-## Live Demo
+This project reflects my approach to **clarifying data flows and supporting usable interfaces** through well-organized backend design.
 
-[Live Demo Link](https://yoco-tracking-app-api.herokuapp.com/)
+---
 
+## 🚀 Key Features
 
-## Getting Started
+- 🔐 User authentication with JWT
+- 👥 Role-based access (user vs admin)
+- 📊 CRUD for daily progress records
+- 🗂 Admin management of tracking categories (items)
+- 🌐 CORS-configured for frontend integration
 
-To get a local copy up and running, follow these simple example steps.
+Frontend app for this API:  
+🔗 [Tracking App with React & Redux](https://github.com/yoko-vicky/Tracking-App-with-React-Redux)
 
-1. On the project GitHub page, navigate to the main page of the repository.
-2. Under the repository name, locate and click on a green button named `Code`. 
-3. Copy the project URL as displayed.
-4. If you're running the Windows Operating System, open your command prompt. On Linux, Open your terminal. 
-5. Change the current working directory to the location where you want the cloned directory to be made. Leave as it is if the current location is where you want the project to be. 
-6. Type git clone, and then paste the URL you copied in Step 3. <br>
-e.g. $ git clone https://github.com/yourUsername/yourProjectName 
-7. Press Enter. Your local copy will be created. 
-8. To install all dependencies and necessary gems, run `bundle install`
-9. Run `rails db:setup`
-10. Run `rails server` to run rails application in your local server
-11. Run `rspec` to run rspec tests
+---
 
-## How to allow the frontend app to interact with this API
-1. Go to puma.rb in config/initializers, and rewrite the port from 3000 to 3001 like below:
-e.g. `port ENV.fetch("PORT") { 3001 }`
+## 🛠️ Built With
 
-2. Go to cors.rb in config/initializers, and rewrite the origins path for your frontend path in both local and production
+- [Ruby on Rails](https://rubyonrails.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [JWT](https://jwt.io/)
+- [Rack-cors](https://github.com/cyu/rack-cors)
 
+---
 
-## Authentication
+## ⚙️ Getting Started
 
-- To manage records and items, it needs to log in with a username and a password. Then, you need to include a token, which is issued and passed by logged in, in the header when interacting with this API like below: 
-`headers: {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${token}`,
-},`
-- Plus, to manage items, it needs to log in with the user account with the admin: true
+To run locally:
 
+```bash
+git clone https://github.com/yoko-vicky/Tracking-App-Api-with-Rails
+cd Tracking-App-Api-with-Rails
+bundle install
+rails db:setup
+rails server
+```
+To run tests:
+```
+rspec
+```
+---
 
-## How to create admin user
+## 🌐 Live Demo
 
-This API administrator can create an admin user through the rails console in the local environment or using the rails database seed file whichever you like. For example, in the console, run IRB by `rails c`, then in the IRB console, you can create an admin user like below:
-`User.create(username: 'admin', password: 'admin', admin: true)`
+[API Demo on Heroku](https://yoco-tracking-app-api.herokuapp.com/)
 
-By default, I created the seeds file in this repository to create an admin user. So after `rails db:setup` at step 9 in the "Getting Started" section, the admin user will be automatically created.
+---
 
+## 👥 Usage
 
-## Author
+### As a User
+- Sign up or log in with your username and password.
+- Receive a JWT token for secure access.
+- Use the token in your Authorization headers when sending requests:
+```json
+Authorization: Bearer {your_token}
+```
+- View and manage your daily tracking records.
 
-👤 **Yoko Saka**
+---
 
-- GitHub: [@yocosaka](https://github.com/yocosaka)
-- Twitter: [@yocosaka](https://twitter.com/yocosaka)
-- LinkedIn: [Yoko Saka](https://www.linkedin.com/in/yokosaka)
+### As an Admin
+- Admin accounts can manage the items (categories to track).
+- Admin user creation example in Rails console:
+```ruby
+User.create(username: 'admin', password: 'admin', admin: true)
+```
+- By default, running rails `db:setup` seeds an admin user.
 
+---
 
-## Contributing
+## 🔗 Frontend Integration
+This API is designed to work seamlessly with the frontend React app.
+For local development:
+1. Update the puma.rb port if needed (e.g., 3001).
+2. Adjust CORS settings in cors.rb for your frontend origin.
 
-Contributions, issues, and feature requests are welcome!
-Feel free to check the [issues page](../../issues).
+Example CORS configuration:
+```ruby
+origins 'http://localhost:3000'
+```
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+---
+
+## ✨ Database Structure
+
+**Tables and Models:**
+
+- **Users**: username, password_digest, admin (boolean)
+- **Items**: title, unit, icon, target
+- **Records**: date, result, item_id, user_id
+
+The design aligns with user-friendly categorization and historical tracking on the frontend.
+
+---
+
+## 👤 Author
+
+**Yoko Saka**  
+UX-Focused Frontend Developer × Backend Integration
+
+- GitHub: [@yoko-vicky](https://github.com/yoko-vicky)
+- LinkedIn: [Yoko Saka](https://www.linkedin.com/in/yoko-vicky/)
+- Portfolio: [View My Work](https://www.yokoworks.dev/)
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo  
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)  
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)  
+4. Push to the branch (`git push origin feature/AmazingFeature`)  
 5. Open a Pull Request
 
+---
 
-## Show your support
+## ⭐️ Support
 
-Give a ⭐️ if you like this project!
+If you found this useful or inspiring, please give it a ⭐️!
+
+---
+
+## 📝 License
+
+**Application:** MIT License
+
+---
+
+## 🙏 Acknowledgements
+
+- [Ruby on Rails Guides](https://guides.rubyonrails.org/api_documentation_guidelines.html)
+- [JWT](https://jwt.io/)
+- [Rack-cors](https://github.com/cyu/rack-cors)
+- [Bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
+- [Shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+- [Rspec-rails](https://github.com/rspec/rspec-rails)
 
 
-## License
 
-This project is [MIT](./LICENSE) licensed. 
-
-
-## Acknowledgements
-* [Ruby on Rails guide](https://guides.rubyonrails.org/api_documentation_guidelines.html)
-* [Arctile in CloudBees](https://www.cloudbees.com/blog/producing-documentation-for-your-rails-api/)
-* [JWT](https://jwt.io/)
-* [Rack-cors](https://github.com/cyu/rack-cors)
-* [Bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
-* [Shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
-* [Rspec-rails](https://github.com/rspec/rspec-rails)
