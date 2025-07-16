@@ -67,12 +67,6 @@ rspec
 ```
 ---
 
-## 🌐 Live Demo
-
-[API Demo on Heroku](https://yoco-tracking-app-api.herokuapp.com/)
-
----
-
 ## 👥 Usage
 
 ### As a User
