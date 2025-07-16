@@ -18,11 +18,13 @@ Developed as a Microverse capstone, this API was designed to support an intuitiv
 
 ## 🧠 API Design Highlights
 
-- RESTful architecture aligned with Rails best practices
-- Secure authentication using JWT
+- RESTful architecture for predictable integration with frontend needs
+- Secure authentication using JWT to support stateless session handling from React
 - CORS setup for seamless frontend–backend communication
+- Defined clear JSON responses to support React + Redux state management
+- Designed endpoints to minimize client-side data processing and ensure reliable UX flows
 - Admin mode for managing trackable categories
-- Structured, relational Postgres database
+- Structured, relational Postgres database supporting customizable categories and efficient user-specific record retrieval
 
 This project reflects my approach to **clarifying data flows and supporting usable interfaces** through well-organized backend design.
 
@@ -111,7 +113,7 @@ origins 'http://localhost:3000'
 - **Items**: title, unit, icon, target
 - **Records**: date, result, item_id, user_id
 
-The design aligns with user-friendly categorization and historical tracking on the frontend.
+The relational schema was designed to support customizable categories and efficient user-specific record retrieval, enabling clear, filterable history views in the UI.
 
 ---
 
