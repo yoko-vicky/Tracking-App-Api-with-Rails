@@ -1,6 +1,6 @@
 # 📦 Tracking App API – Ruby on Rails RESTful Backend
 
-A structured REST API that powers the **Tracking App** — enabling clear, customizable daily habit tracking with secure user management.
+A structured Rails REST API designed to support seamless frontend integration — enabling intuitive daily tracking, personalized UX flows, and secure user management.
 
 ![screenshot](./screenshot.png)
 
@@ -10,7 +10,7 @@ A structured REST API that powers the **Tracking App** — enabling clear, custo
 
 **Tracking App API** is the Rails-based backend for the fullstack **Tracking App**. It provides a RESTful interface to manage users, categories (items), and daily progress records.
 
-Developed as a Microverse capstone, this API was designed to support an intuitive, low-friction UX on the frontend — handling structured data and authentication cleanly to reduce user confusion and support real-world use.
+This API was designed in tandem with the frontend to align authentication, data structure, and endpoint design with real user flows — reducing friction and enabling maintainable UX patterns.
 
 🔗 Frontend repo: [Tracking App with React & Redux](https://github.com/yoko-vicky/Tracking-App-with-React-Redux)
 
@@ -21,10 +21,12 @@ Developed as a Microverse capstone, this API was designed to support an intuitiv
 - RESTful architecture for predictable integration with frontend needs
 - Secure authentication using JWT to support stateless session handling from React
 - CORS setup for seamless frontend–backend communication
-- Defined clear JSON responses to support React + Redux state management
-- Designed endpoints to minimize client-side data processing and ensure reliable UX flows
+- Defined clear and consistent API responses to simplify frontend state handling and reduce client-side logic
+- Designed API contracts to reflect frontend UX flows — minimizing transformation logic and supporting predictable async behavior
 - Admin mode for managing trackable categories
 - Structured, relational Postgres database supporting customizable categories and efficient user-specific record retrieval
+- Collaborated on aligning database schema and API shape with frontend input/output needs
+- Structured relational models to support customizable, per-user tracking and admin-level category management
 
 This project reflects my approach to **clarifying data flows and supporting usable interfaces** through well-organized backend design.
 
@@ -113,14 +115,14 @@ origins 'http://localhost:3000'
 - **Items**: title, unit, icon, target
 - **Records**: date, result, item_id, user_id
 
-The relational schema was designed to support customizable categories and efficient user-specific record retrieval, enabling clear, filterable history views in the UI.
+The relational schema was designed in coordination with frontend flows — supporting customizable categories, user-specific filtering, and clear mapping to UI logic for record history and chart views.
 
 ---
 
 ## 👤 Author
 
 **Yoko Saka**  
-UX-Focused Frontend Developer × Backend Integration
+UX-Focused Frontend Developer bridging Data, Design, and API Architecture
 
 - GitHub: [@yoko-vicky](https://github.com/yoko-vicky)
 - LinkedIn: [Yoko Saka](https://www.linkedin.com/in/yoko-vicky/)
